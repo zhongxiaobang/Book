@@ -39,25 +39,7 @@ namespace Book
 
                 foreach (var item in elements)
                 {
-                    BookInfo bookInfo = new BookInfo();
-                    bookInfo.ID = Kit.GetGuid();
-                    bookInfo.ImagePath = item.Select("img[src]").Attr("src");
-                    bookInfo.URL = item.Select("h3 a[cpos=title]").Attr("href");
-                    bookInfo.Name = item.Select("h3 a[cpos=title]").Html()
-                                    .Replace("em", "")
-                                    .Replace("<", "")
-                                    .Replace(">", "")
-                                    .Replace("/", "")
-                                    .Replace(" ", "");
-                    bookInfo.Author = item.Select("p.result-game-item-info-tag:eq(0) span:eq(1)").Html()
-                                      .Replace(" ", "");
-                    bookInfo.UpdateTime = Convert.ToDateTime(item.Select("p.result-game-item-info-tag:eq(2) span:eq(1)").Html()
-                                      .Replace(" ", ""));
-                    bookInfo.Loeva = item.Select("p.result-game-item-info-tag:eq(3) a").Html()
-                                      .Replace(" ", "");
-                    bookInfo.Metadata = item.Html();
-                    bookInfo.ChapterPath = "data/BookList/" + bookInfo.Author + "-" + bookInfo.Name + ".json";
-                    //books.Add(bookInfo);
+                    BookInfo bookInfo = BookResolver.GetBookInfo(item);
 
                     ListViewItem viewItem = new ListViewItem(bookInfo.Name);
                     viewItem.SubItems.Add(bookInfo.Author);
