@@ -45,5 +45,20 @@ namespace Book.Common
         {
             return Guid.NewGuid().ToString();
         }
+
+        /// <summary>
+        /// 替换
+        /// </summary>
+        /// <param name="newValue"></param>
+        /// <param name="oldValue"></param>
+        /// <returns></returns>
+        public static string Replace(string value, string newValue, params string[] oldValue)
+        {
+            for (int i = 0; i < oldValue.Length; i++)
+            {
+                value = value.Replace(oldValue[i], newValue);
+            }
+            return value;
+        }
     }
 }

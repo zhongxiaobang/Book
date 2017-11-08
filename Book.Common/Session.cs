@@ -29,6 +29,30 @@ namespace Book.Common
             }
         }
 
+        public int Count
+        {
+            get
+            {
+                return kvs.Count;
+            }
+        }
+
+        public Dictionary<string, object>.KeyCollection Keys
+        {
+            get
+            {
+                return kvs.Keys;
+            }
+        }
+
+        public Dictionary<string, object>.ValueCollection Values
+        {
+            get
+            {
+                return kvs.Values;
+            }
+        }
+
         public object this[Keys key]
         {
             get
@@ -84,6 +108,16 @@ namespace Book.Common
         public void Remove(Keys key)
         {
             kvs.Remove(key.ToString());
+        }
+
+        public bool ContainsKey(string key)
+        {
+            return kvs.ContainsKey(key);
+        }
+
+        public bool ContainsValue(string value)
+        {
+            return kvs.ContainsValue(value);
         }
 
         public static Session GetInstance()

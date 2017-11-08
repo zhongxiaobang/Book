@@ -22,6 +22,17 @@ namespace Book.Common
         {
             return File.ReadAllText(path, encoding);
         }
+
+        /// <summary>
+        /// 打开一个文件，使用指定的编码读取文件的所有行，然后关闭该文件。(使用UTF-8编码)
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ReadAllText(string path)
+        {
+            return ReadAllText(path, Encoding.UTF8);
+        }
+
         /// <summary>
         /// 创建一个新文件，在其中写入指定的字符串，然后关闭文件。如果目标文件已存在，则覆盖该文件。
         /// </summary>
@@ -37,6 +48,16 @@ namespace Book.Common
             }
 
             File.WriteAllText(path, contents, encoding);
+        }
+
+        /// <summary>
+        /// 创建一个新文件，在其中写入指定的字符串，然后关闭文件。如果目标文件已存在，则覆盖该文件。(使用UTF-8编码)
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="contents"></param>
+        public static void WriteAllText(string path, string contents)
+        {
+            WriteAllText(path, contents, Encoding.UTF8);
         }
     }
 }

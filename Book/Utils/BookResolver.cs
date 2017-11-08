@@ -26,12 +26,7 @@ namespace Book
             bookInfo.ID = Kit.GetGuid();
             bookInfo.ImagePath = element.Select("img[src]").Attr("src");
             bookInfo.URL = element.Select("h3 a[cpos=title]").Attr("href");
-            bookInfo.Name = element.Select("h3 a[cpos=title]").Html()
-                            .Replace("em", "")
-                            .Replace("<", "")
-                            .Replace(">", "")
-                            .Replace("/", "")
-                            .Replace(" ", "");
+            bookInfo.Name = element.Select("h3 a[cpos=title]").Html().Replace("",new string[] { " ", "<em>", "</em>" });
             bookInfo.Author = element.Select("p.result-game-item-info-tag:eq(0) span:eq(1)").Html()
                               .Replace(" ", "");
             bookInfo.UpdateTime = Convert.ToDateTime(element.Select("p.result-game-item-info-tag:eq(2) span:eq(1)").Html()
